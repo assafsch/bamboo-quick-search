@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Search Bamboo",
-  "description": "This extension allows to easily search and navigate build plans from the Omnibar",
+  "description": "This extension allows to easily search and navigate Atlasian Bamboo build plans from the Omnibar",
   "version": "1.0.1",
 
   "background": {
