@@ -1,8 +1,23 @@
+var serverAddress = "";
+
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+        console.info(changes);
+        for (key in changes) {
+          if (key == "serverAddress") {
+            var storageChange = changes[key];
+            serverAddress = storageChange.newValue;
+          }
+      }
+    });
+
 chrome.omnibox.onInputChanged.addListener(
   function(text, suggest) {
     if(!text) return;
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ic-build.cisco.com/rest/api/latest/quicksearch?searchTerm=" + text, true);
+    chrome.storage.sync.get('buildServerAddress', function(data) {
+      serverAddress = data.buildServerAddress;
+    });
+    xhr.open("GET", "https://" + serverAddress + "/rest/api/latest/quicksearch?searchTerm=" + text, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4) {
         // JSON.parse does not evaluate the attacker's scripts.
@@ -27,7 +42,7 @@ chrome.omnibox.onInputEntered.addListener(
   function(text) {
     // Get the key out of the suggestion.
     key = text.split(")")[0].split("(")[1]
-    navigate("https://ic-build.cisco.com/browse/" + key);
+    navigate("https://" + serverAddress + "/browse/" + key);
   });
 
 function navigate(url) {

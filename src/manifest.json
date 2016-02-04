@@ -1,18 +1,23 @@
 {
   "manifest_version": 2,
 
-  "name": "Bamboo Quick Search",
+  "name": "Search Bamboo",
   "description": "This extension allows to easily search and navigate build plans from the Omnibar",
-  "version": "1.0",
+  "version": "1.0.1",
 
   "background": {
     "scripts": ["background.js"]
   },
-  "omnibox": { "keyword" : "ic-build" },
+  "omnibox": { "keyword" : "sb" },
   "minimum_chrome_version": "9",
   "manifest_version": 2,
   "permissions": [
     "https://*/",
-    "cookies"
-  ]
+    "cookies",
+    "storage"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  }
 }
