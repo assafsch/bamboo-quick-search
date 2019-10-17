@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Bamboo Quick Search</title>
-  <style>
-    <link rel="stylesheet" href="chrome://resources/css/chrome_shared.css">
-  </style>
-</head>
+<html lang="en">
+  <head>
+    <title>Search Bamboo</title>
+    <!-- <link rel="stylesheet" href="chrome://resources/css/chrome_shared.css" /> -->
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
 
-<body>
-  <section id="startup-section">
-    <h3>General</h3>
-    <div id="startup-section-content">
-      <label>
-        Bamboo hostname: <input type="textbox" id="serverAddress">
-      </label>
+    <style>
+      input:valid{ border-color: green; }
+      input:invalid{ border-color: red; }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="startup-section">
+        <div class="form-group">
+          <div class="font-weight-bold">General</div>
+          <div id="startup-section-content">
+            <label for="serverAddress">Bamboo URL</label>
+            <input class="form-control" type="url" id="serverAddress"
+              placeholder="https://example.com"
+              pattern="^https:\/\/.*$"
+              title="Bamboo instance URL"
+              required>
+            <small id="urlHelp" class="form-text text-muted">For
+              Enter URL - for example https://example.com</small>
+          </div>
+        </div>
+
+        <div id="status" class="alert alert-success d-none"><strong>Success</strong>
+          Hostname updated!</div>
+        <div class="form-group">
+          <button type="submit" id="save">Save</button>
+        </div>
+
+      </div>
     </div>
-  </section>
-  <br><br>
-  <div id="status"></div>
-  <button id="save">Save</button>
 
-  <script src="options.js"></script>
-</body>
+    <script src="options.js"></script>
+  </body>
 </html>

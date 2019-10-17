@@ -2,15 +2,22 @@
   "manifest_version": 2,
 
   "name": "Search Bamboo",
-  "description": "This extension allows to easily search and navigate Atlasian Bamboo build plans from the omnibox",
-  "version": "1.0.2",
+  "description": "This extension allows to easily search and navigate Atlassian Bamboo build plans from the omnibox",
+  "version": "1.0.3",
 
   "background": {
     "scripts": ["background.js"]
   },
-  "omnibox": { "keyword" : "sb" },
+  "omnibox": {
+    "keyword": "b"
+  },
+  "icons": {
+    "16": "bamboo_16.png",
+    "32": "bamboo_32.png",
+    "48": "bamboo_48.png",
+    "128": "bamboo_128.png"
+  },
   "minimum_chrome_version": "9",
-  "manifest_version": 2,
   "permissions": [
     "https://*/",
     "cookies",
